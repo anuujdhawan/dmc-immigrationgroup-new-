@@ -169,19 +169,21 @@ export function CredentialsSection({ market }: { market: Market }) {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-linear-to-t from-brand-950 via-brand-950/55 to-brand-950/5"
+                  className="absolute inset-0 bg-linear-to-t from-brand-950 via-brand-950/70 to-brand-950/15"
                 />
                 <div className="relative p-6">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-950/55 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] backdrop-blur-sm">
                     {consultant.registration}
                   </span>
-                  <h3 className="mt-3 font-display text-2xl font-bold text-white">
+                  <h3 className="mt-3 font-display text-2xl font-bold text-white [text-shadow:0_2px_6px_rgba(5,10,6,0.7)]">
                     {consultant.name}
                   </h3>
-                  <p className="mt-1 text-sm text-white/80">{consultant.role}</p>
+                  <p className="mt-1 text-sm font-medium text-white [text-shadow:0_1px_3px_rgba(5,10,6,0.6)]">
+                    {consultant.role}
+                  </p>
                   <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-200/90">
-                      <span className="size-1.5 rounded-full bg-amber-400" />
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-white [text-shadow:0_1px_2px_rgba(5,10,6,0.6)]">
+                      <span className="size-1.5 rounded-full bg-white" />
                       Status subject to confirmation
                     </span>
                     <a

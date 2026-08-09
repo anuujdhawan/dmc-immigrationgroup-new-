@@ -5036,7 +5036,7 @@ section[id]>div {
 
 /* Why-DMC and verifiable credential blocks */
 #why-dmc .fade-up.grid>div,
-#credentials .space-y-4>div {
+#credentials .space-y-4>div:not(.grid) {
   min-height: 142px;
   border: 1px solid var(--dmc-card-border) !important;
   border-radius: 24px !important;
@@ -5046,7 +5046,7 @@ section[id]>div {
 }
 
 #why-dmc .fade-up.grid>div:hover,
-#credentials .space-y-4>div:hover {
+#credentials .space-y-4>div:not(.grid):hover {
   transform: translateY(-6px);
   border-color: rgba(69, 179, 24, .3) !important;
   box-shadow: var(--dmc-card-shadow-hover) !important;
@@ -5056,7 +5056,7 @@ section[id]>div {
   color: #2A7015 !important;
 }
 
-#credentials .space-y-4>div {
+#credentials .space-y-4>div:not(.grid) {
   min-height: 118px;
 }
 
@@ -10559,11 +10559,11 @@ footer.dmc-site-footer button:hover {
   background: rgba(104, 200, 58, .12) !important;
 }
 
-#credentials .space-y-4>div h3 {
+#credentials .space-y-4>div:not(.grid) h3 {
   color: #182416 !important;
 }
 
-#credentials .space-y-4>div p {
+#credentials .space-y-4>div:not(.grid) p {
   color: #727c6f !important;
 }
 
@@ -10715,7 +10715,7 @@ footer.dmc-site-footer button:hover {
     padding: 14px;
   }
 
-  #credentials .space-y-4>div {
+  #credentials .space-y-4>div:not(.grid) {
     align-items: flex-start;
     padding: 1.15rem !important;
   }
