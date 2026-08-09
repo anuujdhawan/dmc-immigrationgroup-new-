@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { BadgeCheck, ExternalLink } from "lucide-react";
 
 import { CONSULTANT_CREDENTIALS, CREDENTIALS } from "@/config/credentials";
@@ -67,7 +69,7 @@ export function CredentialsSection({ market }: { market: Market }) {
             </div>
           </div>
 
-          <div className="relative mt-10 rounded-[24px] border border-white/10 bg-white/6 p-5 shadow-[0_18px_42px_rgba(0,0,0,0.16)] backdrop-blur-xl">
+          <div className="relative mt-12 rounded-[24px] border border-white/10 bg-white/6 p-6 shadow-[0_18px_42px_rgba(0,0,0,0.16)] backdrop-blur-xl">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="credential-trail-kicker text-[10px] font-bold uppercase tracking-[0.2em] text-brand-100/80">
@@ -100,27 +102,6 @@ export function CredentialsSection({ market }: { market: Market }) {
                 </p>
                 <p className="credential-trail-copy mt-1 text-sm text-slate-700">Direct outbound link to the official register page.</p>
               </div>
-            </div>
-          </div>
-
-          <div className="relative mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="credential-trust-card rounded-2xl border border-white/12 bg-white/88 px-4 py-3 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-              <p className="credential-trust-label text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700/80">
-                Public record first
-              </p>
-              <p className="credential-trust-copy mt-1 text-sm text-slate-700">No badge appears without a live source.</p>
-            </div>
-            <div className="credential-trust-card rounded-2xl border border-white/12 bg-white/88 px-4 py-3 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-              <p className="credential-trust-label text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700/80">
-                Country aware
-              </p>
-              <p className="credential-trust-copy mt-1 text-sm text-slate-700">Licensing is shown where it actually applies.</p>
-            </div>
-            <div className="credential-trust-card rounded-2xl border border-white/12 bg-white/88 px-4 py-3 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-              <p className="credential-trust-label text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700/80">
-                No empty claims
-              </p>
-              <p className="credential-trust-copy mt-1 text-sm text-slate-700">We keep the language measurable and honest.</p>
             </div>
           </div>
 
@@ -173,30 +154,47 @@ export function CredentialsSection({ market }: { market: Market }) {
             </div>
           ))}
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {CONSULTANT_CREDENTIALS.map((consultant) => (
               <div
                 key={consultant.registration}
-                className="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-white p-6 shadow-card sm:flex-row sm:items-center sm:justify-between"
+                className="relative isolate flex min-h-80 flex-col justify-end overflow-hidden rounded-3xl border border-white/60 shadow-card"
               >
-                <div>
-                  <h3 className="font-display text-lg font-bold text-ink">{consultant.name}</h3>
-                  <p className="text-sm text-slate-500">
-                    {consultant.role} · {consultant.registration}
-                  </p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-slate-400">
-                    Status subject to final confirmation
-                  </p>
+                <Image
+                  src={consultant.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-linear-to-t from-brand-950 via-brand-950/55 to-brand-950/5"
+                />
+                <div className="relative p-6">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-sm">
+                    {consultant.registration}
+                  </span>
+                  <h3 className="mt-3 font-display text-2xl font-bold text-white">
+                    {consultant.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-white/80">{consultant.role}</p>
+                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-200/90">
+                      <span className="size-1.5 rounded-full bg-amber-400" />
+                      Status subject to confirmation
+                    </span>
+                    <a
+                      href={consultant.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-brand-800 transition hover:bg-brand-50"
+                    >
+                      Verify on {consultant.registerName}
+                      <ExternalLink aria-hidden="true" className="size-3.5" />
+                    </a>
+                  </div>
                 </div>
-                <a
-                  href={consultant.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-xs font-bold text-brand-700 transition hover:bg-slate-50"
-                >
-                  Verify on {consultant.registerName}
-                  <ExternalLink aria-hidden="true" className="size-3.5" />
-                </a>
               </div>
             ))}
           </div>
@@ -205,7 +203,7 @@ export function CredentialsSection({ market }: { market: Market }) {
             Register links open the official public register of each regulator. Details shown here
             are subject to final client confirmation before launch.
           </p>
-          <div className="text-center">
+          {/* <div className="text-center">
             <a
               href={marketHref(market, "/credentials")}
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700"
@@ -213,7 +211,7 @@ export function CredentialsSection({ market }: { market: Market }) {
               View full credentials
               <ExternalLink aria-hidden="true" className="size-3.5" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

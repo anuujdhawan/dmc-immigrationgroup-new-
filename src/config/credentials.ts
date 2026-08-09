@@ -14,6 +14,7 @@ export interface ConsultantCredential {
   registerName: string;
   verifyUrl: string;
   status: "candidate";
+  image: string;
 }
 
 export const CREDENTIALS: Credential[] = [
@@ -67,6 +68,7 @@ export const CONSULTANT_CREDENTIALS: ConsultantCredential[] = [
     registerName: "CICC",
     verifyUrl: "https://register.college-ic.ca/",
     status: "candidate",
+    image: "/media/pages/canada/flag.webp",
   },
   {
     name: "Riccardo James Patrick Ippoliti",
@@ -75,5 +77,6 @@ export const CONSULTANT_CREDENTIALS: ConsultantCredential[] = [
     registerName: "MARA / OMARA",
     verifyUrl: "https://www.mara.gov.au/",
     status: "candidate",
+    image: "/media/pages/australia/sydney-harbour.webp",
   },
 ];
